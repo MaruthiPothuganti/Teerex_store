@@ -1,14 +1,28 @@
-import React from "react";
-import { Filters } from "../components";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { Filters, ProductCard } from "../components";
 import { AiOutlineSearch, FiFilter } from "../components/icons";
 
 export const Products = () => {
+  const [prods, setProds] = useState([]);
+
+  const getProds = async () => {
+    const resp = await axios.get(
+      "https://geektrust.s3.ap-southeast-1.amazonaws.com/coding-problems/shopping-cart/catalogue.json"
+    );
+    setProds(resp.data);
+  };
+
+  useEffect(() => {
+    getProds();
+  }, []);
+
   return (
-    <main className="flex h-[90vh]">
-      <aside className="basis-[15%]  hidden md:block">
+    <main className="flex">
+      <aside className="basis-[15%] w-[15%] h-[90vh]  hidden md:block">
         <Filters />
       </aside>
-      <div className="grow p-4">
+      <div className="grow w-full h-[90vh] p-4 overflow-y-auto">
         <div className="flex p-4 justify-center gap-4">
           <input
             type="search"
@@ -22,8 +36,10 @@ export const Products = () => {
             <FiFilter />
           </button>
         </div>
-        <section className="p-4 overflow-y-auto">
-          <h1>Bello</h1>
+        <section className="p-4  flex flex-wrap justify-center gap-4">
+          {prods.map((prod) => (
+            <ProductCard key={prod.id} product={prod} />
+          ))}
         </section>
       </div>
     </main>

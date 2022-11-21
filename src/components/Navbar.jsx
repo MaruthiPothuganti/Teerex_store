@@ -10,8 +10,9 @@ export const Navbar = () => {
           <h2 className="font-bold hover:underline underline-offset-8 cursor-pointer">
             Products
           </h2>
-          <span>
+          <span className="flex">
             <AiOutlineShoppingCart size={32} className="cursor-pointer" />
+            <span className="font-bold">1</span>
           </span>
         </section>
       </nav>

@@ -12,5 +12,9 @@ export const ProductContext = ({ children }) => {
     initialState
   );
 
-  return <StateContext.Provider>{children}</StateContext.Provider>;
+  return (
+    <StateContext.Provider value={{ productState, productDispatch }}>
+      {children}
+    </StateContext.Provider>
+  );
 };

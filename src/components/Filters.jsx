@@ -28,11 +28,11 @@ export const Filters = () => {
       </div>
 
       {filterTypes.map((category) => (
-        <div>
+        <div key={category.name}>
           <ul>
             <h2 className="font-semibold text-lg">{category.name}</h2>
             {category.types.map((item) => (
-              <li className="px-2">
+              <li className="px-2" key={item}>
                 <input type="checkbox" name={item} id={item} />
                 <label htmlFor={item}> {item}</label>
               </li>

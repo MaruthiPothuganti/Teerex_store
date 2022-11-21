@@ -2,12 +2,16 @@ import React from 'react';
 
 export const ProductReducer = (state, action) => {
     switch (action.type) {
-        case value:
+        case "Colour":
 
-            break;
+        case "Gender":
+        case "Price":
+            case "Type":
+
+
 
         default:
-            break;
+            return [...state];
     }
 }
 
