@@ -78,6 +78,7 @@ export const Filters = () => {
                   payload: { min: e.target.min, max: e.target.max },
                 });
               }}
+              checked={price.min === "0" && price.max === "250"}
             />
             <label htmlFor="0-Rs250"> 0-Rs250</label>
           </li>
@@ -94,6 +95,7 @@ export const Filters = () => {
                   payload: { min: e.target.min, max: e.target.max },
                 });
               }}
+              checked={price.min === "251" && price.max === "449"}
             />
             <label htmlFor="Rs250-450"> Rs251-450</label>
           </li>
@@ -110,6 +112,7 @@ export const Filters = () => {
                   payload: { min: e.target.min, max: e.target.max },
                 });
               }}
+              checked={price.min === "450" && price.max === "1000"}
             />
             <label htmlFor="Rs450"> Rs450</label>
           </li>

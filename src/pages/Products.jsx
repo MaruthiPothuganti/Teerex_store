@@ -31,7 +31,7 @@ export const Products = () => {
     getProds();
   }, []);
   const searchedProducts = searchProds(productState.products, searchText);
-  const productsByPrice = filterByPrice(productState.products, price);
+  const productsByPrice = filterByPrice(searchedProducts, price);
   const productsByColor = filterByColor(productsByPrice, colors);
   const productsByGender = filterByGender(productsByColor, genders);
   const finalproducts = filterByType(productsByGender, types);
@@ -52,9 +52,6 @@ export const Products = () => {
               setSearchText(e.target.value);
             }}
           />
-          <button className="p-2 px-3 rounded-md bg-slate-200">
-            <AiOutlineSearch />
-          </button>
           <button className="p-2 px-3 rounded-md bg-slate-200 inline-flex  md:hidden ">
             <FiFilter />
           </button>

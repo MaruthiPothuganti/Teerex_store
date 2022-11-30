@@ -8,7 +8,6 @@ export const ACTION_TYPES = {
     TYPE: "Type",
     RESET:"RESET",
 }
-
 //name type color
 export const searchProds = (prods, searchText) => {
 
@@ -53,5 +52,10 @@ if (!types.length) {
     } else {
         return prods.filter((prod)=> types.includes(prod.type))
     }
+}
+
+
+export const checkProdInCart = (cart, prod) => {
+        return cart.find(cartProd=> cartProd.id ===prod.id)
 }
 
