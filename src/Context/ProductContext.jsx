@@ -7,7 +7,6 @@ export const ProductContext = ({ children }) => {
   const initialState = {
     products: [],
     cart: [],
-    totalCartPrice: 0,
   };
   const [productState, productDispatch] = useReducer(
     productReducer,
