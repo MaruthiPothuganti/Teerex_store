@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useContext, useState } from "react";
 import { Filters, ProductCard } from "../components";
-import { AiOutlineSearch, FiFilter } from "../components/icons";
+import { FiFilter } from "../components/icons";
 import { FilterStateContext } from "../Context/FilterContext";
 import { ProductStateContext } from "../Context/ProductContext";
 import {
@@ -35,7 +35,6 @@ export const Products = () => {
   const productsByColor = filterByColor(productsByPrice, colors);
   const productsByGender = filterByGender(productsByColor, genders);
   const finalproducts = filterByType(productsByGender, types);
-  // console.log("searchedProducts", searchedProducts);
 
   return (
     <main className="flex">

@@ -21,6 +21,7 @@ export const searchProds = (prods, searchText) => {
         }else if (prod.type.toLowerCase().includes(searchText.toLowerCase())) {
             return prod
         }
+        return null
     })
 }
 

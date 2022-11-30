@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { ProductStateContext } from "../Context/ProductContext";
 
 export const Navbar = () => {
-  const { productState, productDispatch } = useContext(ProductStateContext);
+  const { productState } = useContext(ProductStateContext);
 
   return (
     <header className="w-full h-[10vh] bg-slate-300 flex">
