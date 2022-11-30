@@ -4,10 +4,13 @@ import { ACTION_TYPES } from "../utils/helpers";
 
 export const Cart = () => {
   const { productState, productDispatch } = useContext(ProductStateContext);
-  const { cart, totalCartPrice } = productState;
-  console.log("cart", cart);
+  const { cart } = productState;
   const { INCREMENTPRODUCTQUANTITY, DECREMENTPRODUCTQUANTITY, REMOVEFROMCART } =
     ACTION_TYPES;
+
+  const totalCartPrice = cart.reduce((acc, curr) => {
+    return (acc = acc + Number(curr.price) * Number(curr.orderQuantity));
+  }, 0);
 
   return (
     <main className="p-4">
@@ -46,6 +49,7 @@ export const Cart = () => {
                           payload: prod,
                         });
                       }}
+                      disabled={prod.orderQuantity === prod.quantity}
                     >
                       +
                     </button>
@@ -68,6 +72,17 @@ export const Cart = () => {
             </div>
           ))}
         </div>
+        {totalCartPrice !== 0 ? (
+          <div className="flex flex-col">
+            <hr />
+            <h2 className="text-right p-4">
+              Total Price: Rs. {totalCartPrice}
+            </h2>
+            <button className="w-full rounded-md border border-gray-300 bg-[#e5e7eb] py-2 px-3 text-sm font-medium leading-4 text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-slate-500 focus:ring-offset-2">
+              Place Order
+            </button>
+          </div>
+        ) : null}
       </section>
     </main>
   );
