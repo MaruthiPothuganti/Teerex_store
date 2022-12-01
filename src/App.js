@@ -3,6 +3,9 @@ import './App.css';
 import {  Navbar } from './components';
 import { Cart, Error404, Products } from './pages';
 
+  import { ToastContainer } from 'react-toastify';
+  import 'react-toastify/dist/ReactToastify.css';
+
 
 
 function App() {
@@ -17,6 +20,7 @@ function App() {
           <Route path='/*' element={<Error404 />} />
         </Routes>
       </section>
+      <ToastContainer />
     </main>
   );
 }

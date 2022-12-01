@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { ProductStateContext } from "../Context/ProductContext";
 import { ACTION_TYPES } from "../utils/helpers";
+import { toast } from "react-toastify";
 
 export const Cart = () => {
   const { productState, productDispatch } = useContext(ProductStateContext);
@@ -73,6 +74,7 @@ export const Cart = () => {
                         type: REMOVEFROMCART,
                         payload: prod,
                       });
+                      toast.info(`${prod.name} removed`);
                     }}
                   >
                     Remove from Cart

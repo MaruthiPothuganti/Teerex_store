@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { FilterStateContext } from "../Context/FilterContext";
+import { toast } from "react-toastify";
 
 export const Filters = () => {
   const { filterDispatch, filterState } = useContext(FilterStateContext);
@@ -31,6 +32,7 @@ export const Filters = () => {
           <button
             onClick={() => {
               filterDispatch({ type: "RESET" });
+              toast.info("Filters cleared");
             }}
           >
             Clear

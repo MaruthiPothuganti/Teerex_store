@@ -4,6 +4,8 @@ import { ProductStateContext } from "../Context/ProductContext";
 import { ACTION_TYPES } from "../utils/helpers";
 import { checkProdInCart } from "../utils/helpers";
 
+import { toast } from "react-toastify";
+
 export const ProductCard = ({ product }) => {
   const { productState, productDispatch } = useContext(ProductStateContext);
   const { ADDTOCART } = ACTION_TYPES;
@@ -31,6 +33,7 @@ export const ProductCard = ({ product }) => {
                 type: ADDTOCART,
                 payload: product,
               });
+              toast.success(`${product.name} Added to cart`);
             }}
           >
             Add to Cart

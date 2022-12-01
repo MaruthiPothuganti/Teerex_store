@@ -13,8 +13,7 @@ export const productReducer = (state, action) => {
     case REMOVEFROMCART:
       return {
         ...state,
-        cart: state.cart.filter((item) => item.id !== action.payload.id),
-
+        cart: state.cart.filter((item) => item.id !== action.payload.id)
       };
 
     case INCREMENTPRODUCTQUANTITY:
