@@ -12,6 +12,7 @@ import {
   filterByType,
   searchProds,
 } from "../utils/helpers";
+import { toast } from "react-toastify";
 
 const { PRODUCTS } = ACTION_TYPES;
 
@@ -25,12 +26,14 @@ export const getProds = async (productDispatch) => {
       return resp.data;
     }
   } catch (error) {
+    toast.warn("Something went wrong");
     if (axios.isAxiosError(error)) {
       const serverError = error;
       if (serverError && serverError.response) {
         return serverError.response.data;
       }
     }
+    console.log(error);
     return { errorMessage: "something went wrong!" };
   }
 };
