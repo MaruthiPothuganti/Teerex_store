@@ -13,22 +13,36 @@ import {
   searchProds,
 } from "../utils/helpers";
 
+const { PRODUCTS } = ACTION_TYPES;
+
+export const getProds = async (productDispatch) => {
+  try {
+    const resp = await axios.get(
+      "https://geektrust.s3.ap-southeast-1.amazonaws.com/coding-problems/shopping-cart/catalogue.json"
+    );
+    if (resp.status === 200) {
+      productDispatch({ type: PRODUCTS, payload: resp.data });
+      return resp.data;
+    }
+  } catch (error) {
+    if (axios.isAxiosError(error)) {
+      const serverError = error;
+      if (serverError && serverError.response) {
+        return serverError.response.data;
+      }
+    }
+    return { errorMessage: "something went wrong!" };
+  }
+};
+
 export const Products = () => {
   const [searchText, setSearchText] = useState("");
   const { productState, productDispatch } = useContext(ProductStateContext);
   const { filterState } = useContext(FilterStateContext);
   const { colors, genders, types, price } = filterState;
-  const { PRODUCTS } = ACTION_TYPES;
-
-  const getProds = async () => {
-    const resp = await axios.get(
-      "https://geektrust.s3.ap-southeast-1.amazonaws.com/coding-problems/shopping-cart/catalogue.json"
-    );
-    productDispatch({ type: PRODUCTS, payload: resp.data });
-  };
 
   useEffect(() => {
-    getProds();
+    getProds(productDispatch);
   }, []);
   const searchedProducts = searchProds(productState.products, searchText);
   const productsByPrice = filterByPrice(searchedProducts, price);
