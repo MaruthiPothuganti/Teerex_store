@@ -9,7 +9,9 @@ export const Navbar = () => {
   return (
     <header className="w-full h-[10vh] bg-slate-300 flex">
       <nav className="flex w-[90%] m-auto justify-between">
-        <h1 className="text-2xl font-bold">TeeRex Store</h1>
+        <Link to="/">
+          <h1 className="text-2xl font-bold">TeeRex Store</h1>
+        </Link>
         <section className="flex gap-4">
           <Link to="/products">
             <h2 className="font-bold hover:underline underline-offset-8 cursor-pointer">

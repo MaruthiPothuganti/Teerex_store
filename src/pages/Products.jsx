@@ -38,7 +38,7 @@ export const Products = () => {
 
   return (
     <main className="flex">
-      <aside className="basis-[20rem] w-[20rem] h-[90vh] p-2  hidden md:block">
+      <aside className="basis-[20rem] w-[20rem] h-[90vh] p-2 hidden md:block">
         <Filters />
       </aside>
       <div className="grow w-full h-[90vh] p-4 overflow-y-auto">
@@ -51,14 +51,24 @@ export const Products = () => {
               setSearchText(e.target.value);
             }}
           />
-          <button className="p-2 px-3 rounded-md bg-slate-200 inline-flex  md:hidden ">
+          <button className="p-2 px-3 rounded-md bg-slate-200 inline-flex md:hidden ">
             <FiFilter />
           </button>
         </div>
-        <section className="p-4  flex flex-wrap justify-center gap-4">
-          {finalproducts.map((prod) => (
-            <ProductCard key={prod.id} product={prod} />
-          ))}
+        <h2>
+          Showing <span className="font-bold">{finalproducts.length}</span> of
+          30 products
+        </h2>
+        <section className="p-4 flex flex-wrap justify-center gap-4">
+          {finalproducts.length !== 0 ? (
+            finalproducts.map((prod) => (
+              <ProductCard key={prod.id} product={prod} />
+            ))
+          ) : (
+            <h1 className="text-xl font-semibold p-4">
+              Sorry No Luck. Try Something else.
+            </h1>
+          )}
         </section>
       </div>
     </main>
