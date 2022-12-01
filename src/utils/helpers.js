@@ -10,13 +10,14 @@ export const ACTION_TYPES = {
     TYPE: "Type",
     RESET:"RESET",
 }
+
+
 //name type color
 export const searchProds = (prods, searchText) => {
-
     return prods.filter(prod => {
-        if (prod.name.toLowerCase().includes(searchText.toLowerCase())) {
+        if (prod.color.toLowerCase().includes(searchText.toLowerCase())) {
             return prod
-        } else if (prod.color.toLowerCase().includes(searchText.toLowerCase())) {
+        } else if (prod.name.toLowerCase().includes(searchText.toLowerCase())) {
             return prod
         }else if (prod.type.toLowerCase().includes(searchText.toLowerCase())) {
             return prod
@@ -56,7 +57,6 @@ if (!types.length) {
         return prods.filter((prod)=> types.includes(prod.type))
     }
 }
-
 
 export const checkProdInCart = (cart, prod) => {
         return cart.find(cartProd=> cartProd.id ===prod.id)

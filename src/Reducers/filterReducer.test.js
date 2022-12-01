@@ -28,7 +28,7 @@ describe('Filter Reducer', () => {
     expect(state).toEqual(expectedState);
     });
 
-     test('color inclusion', () => {
+    test('color inclusion', () => {
 
         const initialState= {
             colors: ["Red","Blue","Green"],
@@ -50,10 +50,9 @@ describe('Filter Reducer', () => {
         })
 
     expect(state).toEqual(expectedState);
-     });
+    });
 
-
-       test('gender inclusion', () => {
+    test('gender inclusion', () => {
 
         const initialState= {
             colors: ["Red","Blue"],
@@ -75,9 +74,9 @@ describe('Filter Reducer', () => {
         })
 
     expect(state).toEqual(expectedState);
-       });
+    });
 
-     test('gender exclusion', () => {
+    test('gender exclusion', () => {
 
         const initialState= {
             colors: ["Red","Blue"],
@@ -101,8 +100,7 @@ describe('Filter Reducer', () => {
     expect(state).toEqual(expectedState);
     });
 
-
-           test('type inclusion', () => {
+    test('type inclusion', () => {
 
         const initialState= {
             colors: ["Red","Blue"],
@@ -118,15 +116,15 @@ describe('Filter Reducer', () => {
             price: {min:"20",max:"40"}
         }
 
-        const state = filterReducer(initialState, {
-            type: "Type",
-            payload:"Basic"
-        })
+               const state = filterReducer(initialState, {
+                   type: "Type",
+                   payload: "Basic"
+               });
 
     expect(state).toEqual(expectedState);
-       });
+    });
 
-     test('type exclusion', () => {
+    test('type exclusion', () => {
 
         const initialState= {
             colors: ["Red","Blue"],
@@ -150,8 +148,7 @@ describe('Filter Reducer', () => {
     expect(state).toEqual(expectedState);
     });
 
-
-               test('price inclusion', () => {
+    test('price inclusion', () => {
 
         const initialState= {
             colors: ["Red","Blue"],
@@ -173,9 +170,9 @@ describe('Filter Reducer', () => {
         })
 
     expect(state).toEqual(expectedState);
-       });
+    });
 
-     test('reset', () => {
+    test('reset', () => {
 
         const initialState= {
             colors: [],
@@ -191,10 +188,10 @@ describe('Filter Reducer', () => {
             price: {min:"",max:""}
         }
 
-        const state = filterReducer(initialState, {
-            type: "Reset"
+         const state = filterReducer(initialState, {
+             type: "Reset"
 
-        })
+         });
 
     expect(state).toEqual(expectedState);
     });
