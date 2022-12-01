@@ -1,13 +1,13 @@
 import { ACTION_TYPES } from "../utils/helpers";
 
-const { PRODUCTS, ADDDTOCART, REMOVEFROMCART, INCREMENTPRODUCTQUANTITY,DECREMENTPRODUCTQUANTITY } = ACTION_TYPES;
+const { PRODUCTS, ADDTOCART, REMOVEFROMCART, INCREMENTPRODUCTQUANTITY,DECREMENTPRODUCTQUANTITY } = ACTION_TYPES;
 
 export const productReducer = (state, action) => {
   switch (action.type) {
     case PRODUCTS:
       return { ...state, products: action.payload };
 
-    case ADDDTOCART:
+    case ADDTOCART:
       return { ...state, cart: [...state.cart, {...action.payload, orderQuantity:1}], };
 
     case REMOVEFROMCART:
