@@ -40,6 +40,7 @@ export const getProds = async (productDispatch) => {
 
 export const Products = () => {
   const [searchText, setSearchText] = useState("");
+  const [filterVisible, setFilterVisible] = useState(false);
   const { productState, productDispatch } = useContext(ProductStateContext);
   const { filterState } = useContext(FilterStateContext);
   const { colors, genders, types, price } = filterState;
@@ -53,10 +54,15 @@ export const Products = () => {
   const productsByGender = filterByGender(productsByColor, genders);
   const finalproducts = filterByType(productsByGender, types);
 
+  const filterClass = `absolute bg-slate-50 left-[-100rem] w-full p-4 h-[90vh] md:basis-[20rem] md:h-[90vh] md:p-2 md:static md:m-0`;
+
   return (
-    <main className="flex">
-      <aside className="basis-[20rem] w-[20rem] h-[90vh] p-2 hidden md:block">
-        <Filters />
+    <main className="flex relative">
+      <aside
+        className={filterClass}
+        style={{ left: filterVisible ? "0rem" : "-100rem" }}
+      >
+        <Filters setFilterVisible={setFilterVisible} />
       </aside>
       <div className="grow w-full h-[90vh] p-4 overflow-y-auto">
         <div className="flex p-4 justify-center gap-4">
@@ -68,7 +74,10 @@ export const Products = () => {
               setSearchText(e.target.value);
             }}
           />
-          <button className="p-2 px-3 rounded-md bg-slate-200 inline-flex md:hidden ">
+          <button
+            className="p-2 px-3 rounded-md bg-slate-200 inline-flex md:hidden"
+            onClick={() => setFilterVisible((prev) => !prev)}
+          >
             <FiFilter />
           </button>
         </div>

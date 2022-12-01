@@ -2,7 +2,7 @@ import React, { useContext } from "react";
 import { FilterStateContext } from "../Context/FilterContext";
 import { toast } from "react-toastify";
 
-export const Filters = () => {
+export const Filters = ({ setFilterVisible }) => {
   const { filterDispatch, filterState } = useContext(FilterStateContext);
   const { colors, genders, types, price } = filterState;
 
@@ -25,7 +25,15 @@ export const Filters = () => {
   ];
 
   return (
-    <section className="m-4">
+    <section className="md:m-4">
+      <div className="md:hidden">
+        <button
+          className="bg-slate-300 w-full rounded-md"
+          onClick={() => setFilterVisible((prev) => !prev)}
+        >
+          Close
+        </button>
+      </div>
       <div className="flex justify-between my-4">
         <h2 className="font-bold text-xl">Filters</h2>
         <span>
